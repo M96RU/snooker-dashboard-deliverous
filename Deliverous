@@ -1,0 +1,20 @@
+db:
+  description: Database
+  image: mysql:5.7
+  environment:
+    MYSQL_ROOT_PASSWORD: {{ .db_pw }}
+
+api:
+  description: Middle
+  image: m96ru/snooker-dashboard-api:0.1.0
+  environment:
+    DB_HOST: db
+    DB_USER: {{ .db_user }}
+    DB_PW: {{ .db_pw }}
+  links:
+  - name: db
+    alias: db
+  ports:
+  - ip: snooker-dashboard
+    container_port: 8080
+    host_port: 80

@@ -14,7 +14,14 @@ api:
   links:
   - name: db
     alias: db
+
+webapp:
+  description: Front
+  image: m96ru/snooker-dashboard-webapp:0.1.0
+  links:
+  - name: api
+    alias: api
   ports:
   - ip: snooker-dashboard
-    container_port: 8080
+    container_port: 4200
     host_port: 80
